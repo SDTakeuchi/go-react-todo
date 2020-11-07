@@ -16,34 +16,31 @@ database (postgres), backend (Go) and frontend (React).
 - docker
 - docker-compose
 
-## Development setup
+## Development環境
 
     ```
-    $ docker-compose up
+    $ docker-compose up -d
     ```
 
-Find your docker-machine IP by running
+Go API (バックエンド) は、http://localhost:8080でアクセスできます。
+React(フロントエンド) は、 http://localhost:9000 で使用しています。
+Live reloadはcodegangsta/Ginが提供しています。
+
+## Production環境
+
+Production環境ではLive reload、フロントエンドコンテナは必要ありません。
+postgres(DB)、go(BackEnd)、nginxの３つのコンテナのみです。
+以下の手順でビルド、公開を行います。
 
     ```
-    $ docker-machine env default
+    $ docker-compose run client npm run build
     ```
 
-Go todo API (backend) can be accessed at port 8080, webpack-dev-server
-(react frontend) at 9000.
-Requests from webpack-dev-server are proxied to the Go container by
-webpack conifig.
-Live reloading is provided by codegangsta/Gin.
+公開時は別の docker-compose ファイルを使用します。
 
-## Production setup
-
-In production livereloading of Go code and a frontend container are not needed. There are now only three containers: postgres database, go backend and a nginx container. A separate docker-compose file is used, as seen below. Run the following scripts in your cloned git directory:
-
-    # will create build/ directory in ../nginx/, where it is then 
-    # mounted into nginx container to be served as static files
-    $ cd client/ && npm run-script build 
-    $ cd ../ && docker-compose -f docker-compose.prod.yml up -d
-
-You server container will be listening at port 8002 as exposed in docker-compose.prod.yml.
+    ```
+    docker-compose -f docker-compose.prod.yml up -d
+    ```
 
 ## API endpoints
 

@@ -1,19 +1,17 @@
-version: '2'
+version: '3'
 services:
     postgres:
         image: postgres
         environment:
             - POSTGRES_PASSWORD=postgres
-
     server:
         build: ./server
-        command: ./main
+        command: ./gin-bin
         depends_on:
             - "postgres"
         environment:
             - POSTGRES_PASSWORD=postgres
-    
     nginx:
         build: ./nginx
         ports: 
-            - "8002:80"
+            - "8000:80"

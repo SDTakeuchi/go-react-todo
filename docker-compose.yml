@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
     postgres:
         image: postgres
@@ -21,5 +21,6 @@ services:
             # mount node_modules as a workaround for it disappearing
             # after adding /client as a mounted folder
             - /usr/src/app/node_modules
+            - ./nginx/build:/usr/src/nginx/build
         ports:
             - "9000:3000"
