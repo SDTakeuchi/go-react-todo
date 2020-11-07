@@ -5,7 +5,7 @@ class TodoList extends React.Component {
     render() {
         const { todos, onTodoClick, deleteTodo, updateTodo } = this.props
         return (
-            <ul>
+            <table>
               {todos.map(todo =>
                 <Todo
                   key={todo.id}
@@ -15,7 +15,7 @@ class TodoList extends React.Component {
                   updateTodo={() => updateTodo(todo)}
                 />
               )}
-            </ul>
+            </table>
         );
     }
 }

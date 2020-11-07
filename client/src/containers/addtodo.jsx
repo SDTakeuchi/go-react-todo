@@ -1,3 +1,5 @@
+const styles = require("../stylesheets/main.less");
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions/index.jsx'
@@ -15,10 +17,11 @@ let AddTodo = ({ dispatch }) => {
         dispatch(addTodo(input.value))
         input.value = ''
       }}>
-        <input ref={node => {
+        <input 
+          ref={node => {
           input = node
         }} />
-        <button type="submit">
+        <button type="submit" className="btn-submit">
           Todo追加
         </button>
       </form>

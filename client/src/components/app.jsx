@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './footer.jsx'
+import Filter from './filter.jsx'
 import AddTodo from '../containers/addtodo.jsx'
 import VisibleTodoList from '../containers/visibletodolist.jsx'
 import { getTodos } from '../actions/index.jsx'
@@ -20,7 +20,7 @@ class App extends React.Component {
         return (
             <div>
               <AddTodo />
-              <Footer />
+              <Filter />
               <VisibleTodoList />
             </div>
         );
