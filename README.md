@@ -34,12 +34,13 @@ postgres(DB)、go(BackEnd)、nginxの３つのコンテナのみです。
 
     ```
     $ docker-compose run client npm run build
+    $ docker-compose run server go build
     ```
 
 公開時は別の docker-compose ファイルを使用します。
 
     ```
-    docker-compose -f docker-compose.prod.yml up -d
+    $ docker-compose -f docker-compose.prod.yml up -d
     ```
 
 ## API endpoints

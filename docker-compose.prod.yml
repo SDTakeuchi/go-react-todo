@@ -13,5 +13,5 @@ services:
             - POSTGRES_PASSWORD=postgres
     nginx:
         build: ./nginx
-        ports: 
+        ports:
             - "8000:80"
